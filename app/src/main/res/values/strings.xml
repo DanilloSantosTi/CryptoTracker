@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CryptoTracker</string>
+    <string name="formatted_value_crypto">$ %1$s</string>
+    <string name="formatted_displayable_value_crypto">%1$s %</string>
 </resources>
