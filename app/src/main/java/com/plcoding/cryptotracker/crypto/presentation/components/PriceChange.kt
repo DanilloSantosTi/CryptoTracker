@@ -25,8 +25,8 @@ import com.plcoding.cryptotracker.R
 import com.plcoding.cryptotracker.crypto.presentation.models.DisplayedNumber
 import com.plcoding.cryptotracker.ui.theme.CryptoTrackerTheme
 import com.plcoding.cryptotracker.ui.theme.greenBackground
-import com.plcoding.cryptotracker.util.FloatNumbers.HUNDRED
-import com.plcoding.cryptotracker.util.FloatNumbers.ZERO
+import com.plcoding.cryptotracker.core.FloatNumbers.HUNDRED
+import com.plcoding.cryptotracker.core.FloatNumbers.ZERO
 
 @Composable
 fun PriceChange(
