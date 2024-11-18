@@ -25,8 +25,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import com.plcoding.cryptotracker.ui.theme.CryptoTrackerTheme
-import com.plcoding.cryptotracker.util.LabelAnimation.FLOAT_ANIMATION
-import com.plcoding.cryptotracker.util.LabelAnimation.INFINITE_TRANSITION
+import com.plcoding.cryptotracker.core.LabelAnimation.FLOAT_ANIMATION
+import com.plcoding.cryptotracker.core.LabelAnimation.INFINITE_TRANSITION
 
 @Composable
 fun CoinListItemShimmer(

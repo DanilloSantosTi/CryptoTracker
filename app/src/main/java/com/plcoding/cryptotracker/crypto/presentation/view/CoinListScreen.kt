@@ -16,7 +16,7 @@ import com.plcoding.cryptotracker.crypto.presentation.components.CoinListItem
 import com.plcoding.cryptotracker.crypto.presentation.components.CoinListItemShimmer
 import com.plcoding.cryptotracker.crypto.presentation.models.CoinListState
 import com.plcoding.cryptotracker.ui.theme.CryptoTrackerTheme
-import com.plcoding.cryptotracker.util.Numbers.SEVEN
+import com.plcoding.cryptotracker.core.Numbers.SEVEN
 
 @Composable
 fun CoinListScreen(
