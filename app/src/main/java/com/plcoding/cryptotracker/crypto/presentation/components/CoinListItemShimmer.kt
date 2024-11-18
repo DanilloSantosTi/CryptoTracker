@@ -45,12 +45,6 @@ fun CoinListItemShimmer(
         label = FLOAT_ANIMATION
     )
 
-    val contentColor = if (isSystemInDarkTheme()) {
-        Color.White
-    } else {
-        Color.Black
-    }
-
     Row(
         modifier = modifier
             .padding(16.dp),
