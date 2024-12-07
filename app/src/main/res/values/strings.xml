@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">CryptoTracker</string>
     <string name="cyptotracker_price_usd">$ %1$s</string>
-    <string name="cyptotracker_change_percent_24h">%1$s %</string>
+    <string name="cyptotracker_change_percent_24h">%1$s %%</string>
 </resources>
