@@ -12,11 +12,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
+import com.plcoding.cryptotracker.core.presentation.Numbers.SEVEN
 import com.plcoding.cryptotracker.crypto.presentation.components.CoinListItem
 import com.plcoding.cryptotracker.crypto.presentation.components.CoinListItemShimmer
 import com.plcoding.cryptotracker.crypto.presentation.models.CoinListState
 import com.plcoding.cryptotracker.ui.theme.CryptoTrackerTheme
-import com.plcoding.cryptotracker.core.Numbers.SEVEN
 
 @Composable
 fun CoinListScreen(
