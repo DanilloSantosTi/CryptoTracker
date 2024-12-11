@@ -1,4 +1,4 @@
-package com.plcoding.cryptotracker.core
+package com.plcoding.cryptotracker.core.presentation
 
 object FloatNumbers {
     const val HUNDRED = 100F

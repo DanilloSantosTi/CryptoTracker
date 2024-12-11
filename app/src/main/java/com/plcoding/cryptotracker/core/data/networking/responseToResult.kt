@@ -1,11 +1,11 @@
 package com.plcoding.cryptotracker.core.data.networking
 
-import com.plcoding.cryptotracker.core.NetworkStatus.HTTP_STATUS_OK_END
-import com.plcoding.cryptotracker.core.NetworkStatus.HTTP_STATUS_OK_START
-import com.plcoding.cryptotracker.core.NetworkStatus.HTTP_STATUS_REQUEST_TIMEOUT
-import com.plcoding.cryptotracker.core.NetworkStatus.HTTP_STATUS_SERVER_ERROR_END
-import com.plcoding.cryptotracker.core.NetworkStatus.HTTP_STATUS_SERVER_ERROR_START
-import com.plcoding.cryptotracker.core.NetworkStatus.HTTP_STATUS_TOO_MANY_REQUESTS
+import com.plcoding.cryptotracker.core.presentation.NetworkStatus.HTTP_STATUS_OK_END
+import com.plcoding.cryptotracker.core.presentation.NetworkStatus.HTTP_STATUS_OK_START
+import com.plcoding.cryptotracker.core.presentation.NetworkStatus.HTTP_STATUS_REQUEST_TIMEOUT
+import com.plcoding.cryptotracker.core.presentation.NetworkStatus.HTTP_STATUS_SERVER_ERROR_END
+import com.plcoding.cryptotracker.core.presentation.NetworkStatus.HTTP_STATUS_SERVER_ERROR_START
+import com.plcoding.cryptotracker.core.presentation.NetworkStatus.HTTP_STATUS_TOO_MANY_REQUESTS
 import com.plcoding.cryptotracker.core.domain.util.NetworkError
 import com.plcoding.cryptotracker.core.domain.util.Result
 import io.ktor.client.call.NoTransformationFoundException
