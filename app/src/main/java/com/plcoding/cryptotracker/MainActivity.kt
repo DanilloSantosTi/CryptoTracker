@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.plcoding.cryptotracker.core.presentation.util.ObserveAsEvents
-import com.plcoding.cryptotracker.core.presentation.util.toString
+import com.plcoding.cryptotracker.core.presentation.util.toDataError
 import com.plcoding.cryptotracker.crypto.presentation.models.CoinListEvent
 import com.plcoding.cryptotracker.crypto.presentation.view.CoinListScreen
 import com.plcoding.cryptotracker.crypto.presentation.viewmodel.CoinListViewModel
@@ -35,7 +35,7 @@ class MainActivity : ComponentActivity() {
                             is CoinListEvent.Error -> {
                                 Toast.makeText(
                                     context,
-                                    event.error.toString(context),
+                                    event.error.toDataError(context),
                                     Toast.LENGTH_LONG
                                 ).show()
                             }

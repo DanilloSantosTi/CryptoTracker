@@ -4,7 +4,7 @@ import android.content.Context
 import com.plcoding.cryptotracker.R
 import com.plcoding.cryptotracker.core.domain.util.NetworkError
 
-fun NetworkError.toString(context: Context): String {
+fun NetworkError.toDataError(context: Context): String {
     val resId = when (this) {
         NetworkError.REQUEST_TIMEOUT -> R.string.error_request_timeout
         NetworkError.TOO_MANY_REQUESTS -> R.string.error_too_many_request
