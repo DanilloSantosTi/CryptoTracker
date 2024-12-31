@@ -22,7 +22,6 @@ fun <T> ObserveAsEvents(
         lifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
             withContext(Dispatchers.Main.immediate) {
                 events.collect(onEvent)
-
             }
         }
     }

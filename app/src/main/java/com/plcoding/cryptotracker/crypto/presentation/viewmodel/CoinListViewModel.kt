@@ -41,7 +41,7 @@ class CoinListViewModel(
             }
 
             CoinListActions.OnRefresh -> {
-                TODO()
+                loadCoins()
             }
         }
     }
