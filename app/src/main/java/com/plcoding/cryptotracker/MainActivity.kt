@@ -1,7 +1,6 @@
 package com.plcoding.cryptotracker
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -9,18 +8,27 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.plcoding.cryptotracker.core.presentation.util.ObserveAsEvents
-import com.plcoding.cryptotracker.core.presentation.util.toString
+import com.plcoding.cryptotracker.core.presentation.util.toDataError
+import com.plcoding.cryptotracker.crypto.presentation.models.CoinErrorData
+import com.plcoding.cryptotracker.crypto.presentation.models.CoinListActions
 import com.plcoding.cryptotracker.crypto.presentation.models.CoinListEvent
 import com.plcoding.cryptotracker.crypto.presentation.view.CoinListScreen
+import com.plcoding.cryptotracker.crypto.presentation.view.ErrorScreen
 import com.plcoding.cryptotracker.crypto.presentation.viewmodel.CoinListViewModel
 import com.plcoding.cryptotracker.ui.theme.CryptoTrackerTheme
 import org.koin.androidx.compose.koinViewModel
 
 class MainActivity : ComponentActivity() {
+
+    private lateinit var dataError: CoinErrorData
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -29,22 +37,30 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     val viewModel = koinViewModel<CoinListViewModel>()
                     val state by viewModel.state.collectAsStateWithLifecycle()
-                    val context = LocalContext.current
+                    var isError by rememberSaveable {
+                        mutableStateOf(false)
+                    }
                     ObserveAsEvents(viewModel.events) { event ->
                         when (event) {
                             is CoinListEvent.Error -> {
-                                Toast.makeText(
-                                    context,
-                                    event.error.toString(context),
-                                    Toast.LENGTH_LONG
-                                ).show()
+                                isError = true
+                                dataError = event.error.toDataError()
                             }
                         }
                     }
-                    CoinListScreen(
-                        state = state,
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    if (isError) {
+                        ErrorScreen(
+                            modifier = Modifier.padding(innerPadding),
+                            data = dataError
+                        ) {
+                            viewModel.onAction(CoinListActions.OnRefresh)
+                        }
+                    } else {
+                        CoinListScreen(
+                            state = state,
+                            modifier = Modifier.padding(innerPadding)
+                        )
+                    }
                 }
             }
         }
