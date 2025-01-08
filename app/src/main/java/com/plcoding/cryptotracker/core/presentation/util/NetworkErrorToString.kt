@@ -43,7 +43,7 @@ fun NetworkError.toDataError(): CoinErrorData {
             CoinErrorData(
                 titleError = R.string.error_serialization,
                 contentError = R.string.error_serialization_content,
-                imageError = R.drawable.no_internet
+                imageError = R.drawable.error_blocking
             )
         }
 
@@ -51,7 +51,7 @@ fun NetworkError.toDataError(): CoinErrorData {
             CoinErrorData(
                 titleError = R.string.error_unknown,
                 contentError = R.string.error_unknown_content,
-                imageError = R.drawable.no_internet
+                imageError = R.drawable.error_blocking
             )
         }
     }

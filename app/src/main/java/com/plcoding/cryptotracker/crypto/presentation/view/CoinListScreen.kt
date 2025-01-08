@@ -15,13 +15,17 @@ import androidx.compose.ui.unit.dp
 import com.plcoding.cryptotracker.core.presentation.Numbers.SEVEN
 import com.plcoding.cryptotracker.crypto.presentation.components.CoinListItem
 import com.plcoding.cryptotracker.crypto.presentation.components.CoinListItemShimmer
+import com.plcoding.cryptotracker.crypto.presentation.models.CoinListActions
 import com.plcoding.cryptotracker.crypto.presentation.models.CoinListState
+import com.plcoding.cryptotracker.crypto.presentation.viewmodel.CoinListViewModel
 import com.plcoding.cryptotracker.ui.theme.CryptoTrackerTheme
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun CoinListScreen(
     state: CoinListState,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onClick: (CoinListActions) -> Unit
 ) {
     if (state.isLoading) {
         LazyColumn(
@@ -46,7 +50,9 @@ fun CoinListScreen(
             items(state.coins) { coinUi ->
                 CoinListItem(
                     coinUi = coinUi,
-                    onClick = { /*TODO*/ },
+                    onClick = {
+                        onClick(CoinListActions.OnCoinClick(coinUi))
+                    },
                     modifier = Modifier.fillMaxWidth()
                 )
             }
@@ -62,7 +68,8 @@ fun CoinListScreenPreview() {
         CoinListScreen(
             state = CoinListState(
                 isLoading = true
-            )
+            ),
+            onClick = {}
         )
     }
 }

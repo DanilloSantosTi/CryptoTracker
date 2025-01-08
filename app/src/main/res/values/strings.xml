@@ -13,4 +13,7 @@
     <string name="error_unknown_content">Algo deu errado. Tente novamente mais tarde.</string>
     <string name="error_serialization">Não foi possivel carregar os dados</string>
     <string name="error_serialization_content">Não foi possível carregar os dados. Aguarde alguns minutos e tente novamente</string>
+    <string name="market_cap">Valor de mercado</string>
+    <string name="price">Preco</string>
+    <string name="change_last_24h">mudancas nas últimas 24h</string>
 </resources>

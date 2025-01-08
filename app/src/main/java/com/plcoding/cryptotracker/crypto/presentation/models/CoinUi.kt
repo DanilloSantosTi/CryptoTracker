@@ -46,3 +46,7 @@ fun Double.toDisplayedNumber(): DisplayedNumber {
         formatted = formatter.format(this)
     )
 }
+
+fun absoluteChangeFormatted(price: Double, change24Hr: Double): DisplayedNumber {
+    return ((price * change24Hr)/100).toDisplayedNumber()
+}

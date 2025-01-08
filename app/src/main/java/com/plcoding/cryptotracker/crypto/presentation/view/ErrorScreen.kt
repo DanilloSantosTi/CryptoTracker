@@ -19,17 +19,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.plcoding.cryptotracker.R
 import com.plcoding.cryptotracker.crypto.presentation.components.CoinText
 import com.plcoding.cryptotracker.crypto.presentation.models.CoinErrorData
+import com.plcoding.cryptotracker.crypto.presentation.models.CoinListActions
+import com.plcoding.cryptotracker.ui.theme.CryptoTrackerTheme
 
 @Composable
 fun ErrorScreen(
     modifier: Modifier = Modifier,
     data: CoinErrorData,
-    onClick: () -> Unit
+    onClick: (CoinListActions) -> Unit
 ) {
     Column(
         modifier = modifier
@@ -44,37 +48,57 @@ fun ErrorScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Icon(
-                modifier = Modifier.size(85.dp),
+                modifier = Modifier.size(100.dp),
                 painter = painterResource(data.imageError),
                 tint = MaterialTheme.colorScheme.primary,
                 contentDescription = stringResource(data.titleError)
             )
 
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
             CoinText(
                 text = stringResource(data.titleError),
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Justify
             )
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(32.dp))
 
             CoinText(
                 text = stringResource(data.contentError),
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Light,
+                textAlign = TextAlign.Justify
             )
         }
 
         Column {
             Button(
                 modifier = Modifier.fillMaxWidth(),
-                onClick = onClick,
+                onClick = { onClick(CoinListActions.OnRefresh) },
                 shape = Shapes().large
             ) {
                 Text(text = stringResource(R.string.cyptotracker_button_title))
             }
         }
     }
+}
+
+@PreviewLightDark
+@Composable
+private fun ErrorScreenPreview() {
+    CryptoTrackerTheme {
+        ErrorScreen(
+            data = ErrorDataPreview()
+        ) { }
+    }
+}
+
+private fun ErrorDataPreview(): CoinErrorData {
+    return CoinErrorData(
+        titleError = R.string.error_no_internet,
+        contentError = R.string.error_no_internet_content,
+        imageError = R.drawable.no_internet
+    )
 }

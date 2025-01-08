@@ -5,7 +5,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
@@ -18,7 +20,9 @@ fun CoinText(
     fontWeight: FontWeight = FontWeight.Normal,
     color: Color = if (isSystemInDarkTheme()) Color.White else Color.Black,
     maxLines: Int = Int.MAX_VALUE,
-    overflow: TextOverflow = TextOverflow.Ellipsis
+    overflow: TextOverflow = TextOverflow.Ellipsis,
+    textAlign: TextAlign = TextAlign.Unspecified,
+    style: TextStyle = TextStyle.Default
 ) {
     Text(
         modifier = modifier,
@@ -27,6 +31,8 @@ fun CoinText(
         fontWeight = fontWeight,
         color = color,
         maxLines = maxLines,
-        overflow = overflow
+        overflow = overflow,
+        textAlign = textAlign,
+        style = style
     )
 }
