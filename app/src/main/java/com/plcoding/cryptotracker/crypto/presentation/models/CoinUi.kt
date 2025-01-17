@@ -4,6 +4,7 @@ import android.icu.text.NumberFormat
 import androidx.annotation.DrawableRes
 import com.plcoding.cryptotracker.crypto.domain.models.Coin
 import com.plcoding.cryptotracker.core.presentation.util.getDrawableIdForCoin
+import com.plcoding.cryptotracker.crypto.presentation.components.lineChart.DataPoint
 import java.util.Locale
 
 data class CoinUi(
@@ -14,6 +15,7 @@ data class CoinUi(
     val marketCapUsd: DisplayedNumber,
     val priceUsd: DisplayedNumber,
     val changePercent24H: DisplayedNumber,
+    val coinPriceHistory: List<DataPoint> = emptyList(),
     @DrawableRes val iconRes: Int
 )
 

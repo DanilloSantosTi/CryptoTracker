@@ -1,11 +1,13 @@
 package com.plcoding.cryptotracker.crypto.presentation.view
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -15,10 +17,16 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
@@ -29,6 +37,9 @@ import androidx.compose.ui.unit.sp
 import com.plcoding.cryptotracker.R
 import com.plcoding.cryptotracker.crypto.presentation.components.CoinText
 import com.plcoding.cryptotracker.crypto.presentation.components.InfoCard
+import com.plcoding.cryptotracker.crypto.presentation.components.lineChart.ChartStyle
+import com.plcoding.cryptotracker.crypto.presentation.components.lineChart.DataPoint
+import com.plcoding.cryptotracker.crypto.presentation.components.lineChart.LineChart
 import com.plcoding.cryptotracker.crypto.presentation.components.previewCoin
 import com.plcoding.cryptotracker.crypto.presentation.models.CoinListState
 import com.plcoding.cryptotracker.crypto.presentation.models.absoluteChangeFormatted
@@ -100,6 +111,54 @@ fun CoinListDetailScreen(
                     ).formatted,
                     icon = contentIconChangeLast24Hr(changePercent24HIsPositive),
                     contentColor = contentColorChangeLast24Hr(changePercent24HIsPositive)
+                )
+            }
+            AnimatedVisibility(
+                visible = coin.coinPriceHistory.isNotEmpty()
+            ) {
+                var selectedDataPoint by remember {
+                    mutableStateOf<DataPoint?>(null)
+                }
+                var labelWidth by remember {
+                    mutableFloatStateOf(0f)
+                }
+                var totalChartWidth by remember {
+                    mutableFloatStateOf(0f)
+                }
+                val amountOfVisibleDataPoints = if (labelWidth > 0) {
+                    ((totalChartWidth - 2.5 * labelWidth) / labelWidth).toInt()
+                } else {
+                    0
+                }
+                val startIndex = (coin.coinPriceHistory.lastIndex - amountOfVisibleDataPoints)
+                    .coerceAtLeast(0)
+                LineChart(
+                    dataPoints = coin.coinPriceHistory,
+                    style = ChartStyle(
+                        chartLineColor = MaterialTheme.colorScheme.primary,
+                        unselectedColor = MaterialTheme.colorScheme.secondary.copy(
+                            alpha = 0.3f
+                        ),
+                        selectedColor = MaterialTheme.colorScheme.primary,
+                        helperLinesThicknessPx = 5f,
+                        axisLinesThicknessPx = 5f,
+                        labelFontSize = 7.sp,
+                        minYLabelSpacing = 12.dp,
+                        verticalPadding = 4.dp,
+                        horizontalPadding = 4.dp,
+                        xAxisLabelSpacing = 4.dp
+                    ),
+                    visibleDataPointsIndices = startIndex..coin.coinPriceHistory.lastIndex,
+                    unit = "$",
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .aspectRatio(16 / 9f)
+                        .onSizeChanged { totalChartWidth = it.width.toFloat() },
+                    selectedDataPoint = selectedDataPoint,
+                    onSelectedDataPoint = {
+                        selectedDataPoint = it
+                    },
+                    onXLabelWidthChange = { labelWidth = it }
                 )
             }
         }
