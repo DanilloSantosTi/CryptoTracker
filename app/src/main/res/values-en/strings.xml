@@ -13,4 +13,7 @@
     <string name="error_unknown_content">Something went wrong. Please try again later.</string>
     <string name="error_serialization">Couldn\'t serialize or deserialize data.</string>
     <string name="error_serialization_content">Unable to load data. Please wait a few minutes and try again.</string>
+    <string name="market_cap">Marked cap</string>
+    <string name="price">Price</string>
+    <string name="change_last_24h">Change last 24h</string>
 </resources>
