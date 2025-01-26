@@ -13,6 +13,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.plcoding.cryptotracker.core.navigation.AdaptiveCoinListDetailPane
 import com.plcoding.cryptotracker.core.presentation.util.ObserveAsEvents
 import com.plcoding.cryptotracker.core.presentation.util.toDataError
 import com.plcoding.cryptotracker.crypto.presentation.models.CoinErrorData
@@ -27,50 +28,15 @@ import org.koin.androidx.compose.koinViewModel
 
 class MainActivity : ComponentActivity() {
 
-    private lateinit var dataError: CoinErrorData
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             CryptoTrackerTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    val viewModel = koinViewModel<CoinListViewModel>()
-                    val state by viewModel.state.collectAsStateWithLifecycle()
-                    var isError by rememberSaveable {
-                        mutableStateOf(false)
-                    }
-                    ObserveAsEvents(viewModel.events) { event ->
-                        when (event) {
-                            is CoinListEvent.Error -> {
-                                isError = true
-                                dataError = event.error.toDataError()
-                            }
-                        }
-                    }
-                    when {
-                        isError -> {
-                            ErrorScreen(
-                                modifier = Modifier.padding(innerPadding),
-                                data = dataError,
-                                onClick = viewModel::onAction
-                            )
-                        }
-
-                        state.selectedCoin != null -> {
-                            CoinListDetailScreen(
-                                state = state
-                            )
-                        }
-
-                        else -> {
-                            CoinListScreen(
-                                state = state,
-                                modifier = Modifier.padding(innerPadding),
-                                onClick = viewModel::onAction
-                            )
-                        }
-                    }
+                    AdaptiveCoinListDetailPane(
+                        innerPadding = innerPadding
+                    )
                 }
             }
         }
