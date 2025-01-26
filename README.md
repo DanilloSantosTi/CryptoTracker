@@ -44,7 +44,7 @@ Antes de começar, certifique-se de ter os seguintes itens instalados:
 
 ### GIF do Funcionamento
 
-<img src=assets/cryptotracker_video.gif alt="Demonstração do App" width=600 height=300 />
+<img src=assets/cryptotracker_video.gif alt="Demonstração do App" width=600 height=1067 />
 
 ### Capturas de Tela
 
