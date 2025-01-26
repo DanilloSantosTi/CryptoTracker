@@ -54,7 +54,7 @@ Adicione aqui algumas capturas de tela do aplicativo:
 
 | Tela Inicial | Detalhes da Moeda |
 |--------------|-------------------|
-| ![Tela Inicial](assets/tela_principal/png) | ![Detalhes da Moeda](tela_detalhe.png) |
+| ![Tela Inicial](assets/tela_principal.png) | ![Detalhes da Moeda](assetstela_detalhe.png) |
 
 ## Contribuição
 
