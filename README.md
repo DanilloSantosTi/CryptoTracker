@@ -46,7 +46,7 @@ Antes de começar, certifique-se de ter os seguintes itens instalados:
 
 Adicione aqui um GIF demonstrando o funcionamento do aplicativo:
 
-![Demonstração do App](assets/cryptotracker_video.gif)
+<img src="assets/cryptotracker_video.gif" alt="Demonstração do App" width="600" />
 
 ### Capturas de Tela
 
