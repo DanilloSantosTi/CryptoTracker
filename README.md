@@ -50,7 +50,7 @@ Antes de começar, certifique-se de ter os seguintes itens instalados:
 
 | Tela Inicial | Detalhes da Moeda |
 |--------------|-------------------|
-| ![Tela Inicial](assets/tela_principal.png) | ![Detalhes da Moeda](assets/tela_detalhe.png) |
+| <img src=assets/tela_principal.png alt="Tela Inicial" width=300 height=533 /> | <img src=assets/tela_detalhe.png alt="Detalhes da [Moeda" width=300 height=533 />
 
 ## Contribuição
 
