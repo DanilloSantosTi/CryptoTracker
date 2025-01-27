@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.CryptoTracker" parent="android:Theme.Material.Light.NoActionBar.Overscan">
-        <item name="android:windowTranslucentNavigation">true</item>
-    </style>
-
     <style name="Theme.app.Starting" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/black</item>
         <item name="postSplashScreenTheme">@style/Theme.CryptoTracker</item>
-        <item name="android:icon">@drawable/new_logo</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/animated_logo</item>
+        <item name="windowSplashScreenAnimationDuration">3000</item>
     </style>
 </resources>

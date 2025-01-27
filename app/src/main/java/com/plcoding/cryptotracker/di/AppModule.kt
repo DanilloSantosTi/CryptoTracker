@@ -15,4 +15,5 @@ val appModule = module {
     singleOf(::RemoteCoinDataSource).bind<CoinDataSource>()
 
     viewModelOf(::CoinListViewModel)
+
 }
