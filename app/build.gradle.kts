@@ -71,6 +71,8 @@ dependencies {
 
     implementation(libs.bundles.ktor)
 
+    implementation(libs.core.splashscreen)
+
     testImplementation(libs.junit)
 
     androidTestImplementation(libs.androidx.junit)
